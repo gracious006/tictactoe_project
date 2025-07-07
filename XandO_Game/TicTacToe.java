@@ -149,3 +149,32 @@ public class TicTacToe {
         frame.repaint();
         frame.setSize(500, 500);
     }
+
+void checkWinner() {
+java.util.List<java.util.List<Integer>> winningPositions = java.util.Arrays.asList(
+java.util.Arrays.asList(1, 2, 3),
+java.util.Arrays.asList(4, 5, 6),
+java.util.Arrays.asList(7, 8, 9),
+java.util.Arrays.asList(1, 4, 7),
+java.util.Arrays.asList(2, 5, 8),
+java.util.Arrays.asList(3, 6, 9),
+java.util.Arrays.asList(1, 5, 9),
+java.util.Arrays.asList(3, 5, 7)
+);
+
+for (java.util.List<Integer> combo : winningPositions) {
+if (playerOne.containsAll(combo)) {
+player1Score++;
+showWinner(player1Name + " wins!");
+return;
+} else if (playerTwo.containsAll(combo)) {
+player2Score++;
+showWinner(player2Name + " wins!");
+return;
+}
+}
+
+if (playerOne.size() + playerTwo.size() == 9) {
+showWinner("It's a draw!");
+}
+}
