@@ -29,3 +29,55 @@ public class TicTacToe {
 
     Color player1Color = new Color(255, 182, 193);
     Color player2Color = new Color(173, 216, 230);
+
+    void welcomeScreen() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(6, 1));
+        panel.setBackground(new Color(245, 255, 250));
+
+        JLabel welcomeLabel = new JLabel("Welcome to X and O!", SwingConstants.CENTER);
+        welcomeLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
+        welcomeLabel.setForeground(new Color(255, 105, 180));
+        panel.add(welcomeLabel);
+
+        JPanel p1 = new JPanel();
+        p1.add(new JLabel("Player 1 Name:"));
+        p1.add(player1Input);
+        p1.setBackground(new Color(245, 255, 250));
+        panel.add(p1);
+
+        JPanel p2 = new JPanel();
+        p2.add(new JLabel("Player 2 Name:"));
+        p2.add(player2Input);
+        p2.setBackground(new Color(245, 255, 250));
+        panel.add(p2);
+
+        JButton continueButton = new JButton("Continue");
+        continueButton.setBackground(new Color(255, 105, 180));
+        continueButton.setFont(new Font("Arial", Font.BOLD, 14));
+        continueButton.setForeground(Color.WHITE);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(continueButton);
+        buttonPanel.setBackground(new Color(245, 255, 250));
+        panel.add(buttonPanel);
+
+        frame.getContentPane().removeAll();
+        frame.getContentPane().add(panel);
+        frame.revalidate();
+        frame.repaint();
+
+        continueButton.addActionListener(e -> {
+            player1Name = player1Input.getText().trim();
+            player2Name = player2Input.getText().trim();
+            if (!player1Name.isEmpty() && !player2Name.isEmpty()) {
+                drawGrid();
+            } else {
+                JOptionPane.showMessageDialog(frame, "Please enter both player names.");
+            }
+        });
+
+        frame.setSize(400, 300);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
