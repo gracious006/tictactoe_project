@@ -11,3 +11,10 @@ Color-themed interface for both players
 Restart, change players, or exit after each round
 
 Draw and win detection with pop-up notifications
+
+ Name      Responsibility                         
+ Mimi      Game board UI and player turns      
+ Stephanie Welcome screen and input logic       
+ Saada     Win and draw detection               
+ Gracious  Class setup, variables, layout      
+ Collins   Game over dialog, sound, main method 
