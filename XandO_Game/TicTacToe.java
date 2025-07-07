@@ -178,3 +178,40 @@ if (playerOne.size() + playerTwo.size() == 9) {
 showWinner("It's a draw!");
 }
 }
+void showWinner(String message) {
+        String score = player1Name + ": " + player1Score + "   " + player2Name + ": " + player2Score;
+        int option = JOptionPane.showOptionDialog(
+                frame,
+                message + "\n" + score + "\nDo you want to restart the game?",
+                "Game Over",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                new Object[]{"Restart", "Exit"},
+                "Restart"
+        );
+
+        if (option == JOptionPane.YES_OPTION) {
+            drawGrid();
+        } else {
+            System.exit(0);
+        }
+    }
+
+    void playClickSound() {
+        try {
+            InputStream audioSrc = getClass().getResourceAsStream("/click.wav");
+            InputStream bufferedIn = new BufferedInputStream(audioSrc);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(bufferedIn);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        } catch (Exception e) {
+            System.out.println("Sound error: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        new TicTacToe().welcomeScreen();
+    }
+}
